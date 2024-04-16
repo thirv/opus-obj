@@ -314,9 +314,10 @@ void object_analysis(const CELTMode* celt_mode, const void* pcm, opus_val16* ban
 #endif
         OPUS_COPY(mem + c * overlap, in + frame_size, overlap);
     }
-    channel_offset = HALF16(celt_log2(QCONST32(2.f, 14) / (channels - 1)));
+    // Not sure should this be included and if so why, issues at opus_encoder "Surround masking for SILK"
+    /*channel_offset = HALF16(celt_log2(QCONST32(2.f, 14) / (channels - 1)));
     for (i = 0; i < 21; i++)
-        maskLogE[i] += channel_offset;
+        maskLogE[i] += channel_offset;*/
 #if 0
     for (i = 0; i < 21; i++)
         printf("%f ", maskLogE[i]);
